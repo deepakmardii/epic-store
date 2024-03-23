@@ -1,8 +1,16 @@
+import ProductCard from "@/components/ProductCard";
 import { stripe } from "@/utils/stripe";
 
 export default function Home({ products }) {
-  console.log(products);
-  return <div>Home</div>;
+  return (
+    <div className="container xl:max-w-screen-xl mx-auto py-12 px-6">
+      <div className="grid gap-8 xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-1">
+        {products.map((product) => (
+          <ProductCard product={product} />
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export async function getStaticProps() {
