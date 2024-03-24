@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import Rating from "./Rating";
 import { formatCurrencyString, useShoppingCart } from "use-shopping-cart";
+import toast from "react-hot-toast";
 
 export default function ProductCard({ product, index }) {
   const { addItem } = useShoppingCart();
@@ -10,7 +11,9 @@ export default function ProductCard({ product, index }) {
   function onAddToCart(event) {
     // because we have button as a child of link which redirect to productPage
     event.preventDefault();
+    const id = toast.loading("Adding 1 item...");
     addItem(product);
+    toast.success(`${product.name} added`, { id });
   }
   return (
     <Link
