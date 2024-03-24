@@ -10,7 +10,7 @@ import React from "react";
 import { useShoppingCart } from "use-shopping-cart";
 
 export default function CartProduct({ product }) {
-  const { setItemQuantity } = useShoppingCart();
+  const { setItemQuantity, removeItem } = useShoppingCart();
   return (
     <div className="flex justify-between space-x-4 hover:shadow-lg hover:border-opacity-50 border border-opacity-0 rounded-md p-4 bg-white">
       <Link
@@ -51,7 +51,10 @@ export default function CartProduct({ product }) {
           <XMarkIcon className="hidden w-4 h-4 text-gray-500 sm:inline-block mr-4 mb-1" />
           {product.formattedPrice}
         </p>
-        <button className="ml-4 trxt-red-500">
+        <button
+          onClick={() => removeItem(product.id)}
+          className="ml-4 trxt-red-500"
+        >
           <XCircleIcon className="w-6 h-6 flex-shrink-0 opacity-50 hover:opacity-100 transition-opacity" />
         </button>
       </div>
