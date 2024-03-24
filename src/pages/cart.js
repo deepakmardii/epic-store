@@ -3,7 +3,7 @@ import React from "react";
 import { useShoppingCart } from "use-shopping-cart";
 
 export default function Cartpage() {
-  const { cartCount } = useShoppingCart();
+  const { cartCount, clearCart } = useShoppingCart();
   return (
     <div className="container xl:max-w-screen-xl mx-auto py-12 px-6">
       {cartCount > 0 ? (
@@ -11,7 +11,10 @@ export default function Cartpage() {
           <h2 className="text-4xl font-semibold">Your Shopping Cart</h2>
           <p className="mt-1 text-xl">
             {cartCount} items{" "}
-            <button className="opacity-50 hover:opacity-100 text-base capitalize">
+            <button
+              onClick={() => clearCart()}
+              className="opacity-50 hover:opacity-100 text-base capitalize"
+            >
               (clear all)
             </button>
           </p>
