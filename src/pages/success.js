@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import { useShoppingCart } from "use-shopping-cart";
 
-export default function success() {
+export default function Success() {
   const { clearCart } = useShoppingCart();
   const router = useRouter();
   const sessionId = router.query.session_id;
