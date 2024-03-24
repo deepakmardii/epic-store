@@ -2,9 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Rating from "./Rating";
-import { formatCurrencyString } from "use-shopping-cart";
+import { formatCurrencyString, useShoppingCart } from "use-shopping-cart";
 
 export default function ProductCard({ product, index }) {
+  const { addItem } = useShoppingCart();
+
+  function onAddToCart(event) {
+    // because we have button as a child of link which redirect to productPage
+    event.preventDefault();
+    addItem(product);
+  }
   return (
     <Link
       href={`/product/${product.id}`}
@@ -33,7 +40,9 @@ export default function ProductCard({ product, index }) {
               })}
             </p>
           </div>
-          <button className="border rounded-lg py-1 px-4">Add to cart</button>
+          <button onClick={onAddToCart} className="border rounded-lg py-1 px-4">
+            Add to cart
+          </button>
         </div>
       </div>
     </Link>
